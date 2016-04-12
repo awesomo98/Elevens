@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /**
  * This is a class that tests the Deck class.
  */
@@ -8,6 +10,8 @@ public class DeckTester {
 	 *	@param args is not used.
 	 */
 	public static void main(String[] args) {
-		/* *** TO BE IMPLEMENTED IN ACTIVITY 2 *** */
+		ArrayList<deck1> = new Deck(, , 13);
+		ArrayList<deck2> = 
+		
 	}
 }
