@@ -1,5 +1,0 @@
-## Activity 2:
-1. The relationship between a deck and a card is that a card is an object that when combined with multiple cards comprises a deck.
-2. In this situation there would be six cards.
-3. The ranks array would contain the ranks 2-10, king, queen, jack, and ace. The suits array would contain the values spades, hearts, diamonds, and clubs. The pointValues array would contain 2-10, 10, 10, 10, and 11.
-4. The order of suits doesn't matter, because it applies to every card, but the orders of ranks and pointValues does because a certain pointValue can only apply to its specific corresponding rank.
