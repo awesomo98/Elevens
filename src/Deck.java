@@ -18,7 +18,7 @@ public class Deck {
 	 * Cards are dealt from the top (highest index) down.
 	 * The next card to be dealt is at size - 1.
 	 */
-	private int size;
+	private static int size;
 
 
 	/**
@@ -31,12 +31,14 @@ public class Deck {
 	 */
 	public Deck(String[] ranks, String[] suits, int[] values) {
 		cards = new ArrayList<Card>();
-		
-		for (int j = 0; (j < ranks.length) && (j < suits.length) && (j < values.length); j++) {
-			for (int k = 0; k < ranks.length && k < suits.length && k < values.length; k++) {
-				return slippers;
+
+		for (int j = 0; j < suits.length; j ++) {
+			for(int k = 0; k < ranks.length && k < values.length; k ++) {
+				cards.add(new Card(ranks[k], suits[j], values[k]));
 			}
 		}
+
+		size = cards.size();
 		
 		
 	}
@@ -55,7 +57,7 @@ public class Deck {
 	 * @return the number of undealt cards in this deck.
 	 */
 	public int size() {
-		return size;
+		return Deck.size;
 	}
 
 	/**
@@ -72,8 +74,9 @@ public class Deck {
 	 *         previously dealt.
 	 */
 	public Card deal() {
-		Card dealt = (cards.size());
+		Card dealt = cards.get(size - 1);
 		size--;
+
 		return dealt;
 	}
 
