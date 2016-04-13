@@ -18,7 +18,7 @@ public class Deck {
 	 * Cards are dealt from the top (highest index) down.
 	 * The next card to be dealt is at size - 1.
 	 */
-	private static int size;
+	private int size;
 
 
 	/**
@@ -37,9 +37,8 @@ public class Deck {
 				cards.add(new Card(ranks[k], suits[j], values[k]));
 			}
 		}
-
-		size = cards.size();
 		
+		size = cards.size();
 		
 	}
 
@@ -57,7 +56,7 @@ public class Deck {
 	 * @return the number of undealt cards in this deck.
 	 */
 	public int size() {
-		return Deck.size;
+		return size;
 	}
 
 	/**
@@ -106,7 +105,6 @@ public class Deck {
 				rtn = rtn + ", ";
 			}
 			if ((k - cards.size()) % 2 == 0) {
-				// Insert carriage returns so entire deck is visible on console.
 				rtn = rtn + "\n";
 			}
 		}

@@ -20,9 +20,9 @@ public class DeckTester {
 		int[] pointValues2 = {1, 2, 6};
 		Deck deck2 = new Deck(ranks2, suits2, pointValues2);
 		
-		String[] ranks3 = {"queen", "seven"};
+		String[] ranks3 = {"queen", "seven", "eight"};
 		String[] suits3 = {"hearts"};
-		int[] pointValues3 = {12, 7};
+		int[] pointValues3 = {12, 7, 8};
 		Deck deck3 = new Deck(ranks3, suits3, pointValues3);
 		
 		System.out.println(deck3);
