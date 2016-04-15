@@ -50,24 +50,24 @@ public class Shuffler {
 	 * @param values is an array of integers simulating cards to be shuffled.
 	 */
 	public static void perfectShuffle(int[] values) {
-        int[] half1 = new int[ VALUE_COUNT / 2 ];
-        int[] half2 = new int[ VALUE_COUNT - VALUE_COUNT / 2 ];
+        int[] half1 = new int[ SHUFFLE_COUNT / 2 ];
+        int[] half2 = new int[ SHUFFLE_COUNT - SHUFFLE_COUNT / 2 ];
 
-        for( int i = 0; i < VALUE_COUNT / 2; i++ ) {
+        for( int i = 0; i < SHUFFLE_COUNT / 2; i++ ) {
             half1[i] = values[i];
         }
         
-        for( int i = 0; i < VALUE_COUNT - VALUE_COUNT / 2; i++ ) {
-            half2[i] = values[ i + VALUE_COUNT / 2 ];
+        for( int i = 0; i < SHUFFLE_COUNT - SHUFFLE_COUNT / 2; i++ ) {
+            half2[i] = values[ i + SHUFFLE_COUNT / 2 ];
         }
 
-        for( int i = 0; i < VALUE_COUNT / 2; i++ ) {
+        for( int i = 0; i < SHUFFLE_COUNT / 2; i++ ) {
             values[ 2 * i ] = half2[i];
             values[ 2 * i + 1 ] = half1[i];
         }
 
-        if( VALUE_COUNT % 2 != 0 ) {
-            values[ VALUE_COUNT - 1 ] = half2[ VALUE_COUNT - VALUE_COUNT / 2 ];
+        if( SHUFFLE_COUNT % 2 != 0 ) {
+            values[ SHUFFLE_COUNT - 1 ] = half2[ SHUFFLE_COUNT - SHUFFLE_COUNT / 2 ];
         }
     }
 
@@ -83,7 +83,7 @@ public class Shuffler {
 	 * @param values is an array of integers simulating cards to be shuffled.
 	 */
 	public static void selectionShuffle(int[] values) {
-        for( int k = VALUE_COUNT - 1; k >= 0; k-- ) {
+        for( int k = SHUFFLE_COUNT - 1; k >= 0; k-- ) {
             int r = (int)(Math.random() * k);
             int tmp = values[r];
             values[r] = values[k];
