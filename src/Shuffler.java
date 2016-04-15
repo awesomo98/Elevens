@@ -50,26 +50,19 @@ public class Shuffler {
 	 * @param values is an array of integers simulating cards to be shuffled.
 	 */
 	public static void perfectShuffle(int[] values) {
-        int[] half1 = new int[ SHUFFLE_COUNT / 2 ];
-        int[] half2 = new int[ SHUFFLE_COUNT - SHUFFLE_COUNT / 2 ];
-
-        for( int i = 0; i < SHUFFLE_COUNT / 2; i++ ) {
-            half1[i] = values[i];
+        int[] shuffled = new int[(values.length + 1) / 2];
+        int k = 0;
+        for (int j = 0; j <= 25; j++) {
+        	shuffled[k] = values[j];
+        	k = k + 2;
+        }
+        k = 1;
+        for (int j = 26; j <= 51; j++) {
+        	shuffled[k] = values[j];
+        	k = k + 2;
         }
         
-        for( int i = 0; i < SHUFFLE_COUNT - SHUFFLE_COUNT / 2; i++ ) {
-            half2[i] = values[ i + SHUFFLE_COUNT / 2 ];
-        }
-
-        for( int i = 0; i < SHUFFLE_COUNT / 2; i++ ) {
-            values[ 2 * i ] = half2[i];
-            values[ 2 * i + 1 ] = half1[i];
-        }
-
-        if( SHUFFLE_COUNT % 2 != 0 ) {
-            values[ SHUFFLE_COUNT - 1 ] = half2[ SHUFFLE_COUNT - SHUFFLE_COUNT / 2 ];
-        }
-    }
+	}
 
 	/**
 	 * Apply an "efficient selection shuffle" to the argument.
@@ -83,11 +76,15 @@ public class Shuffler {
 	 * @param values is an array of integers simulating cards to be shuffled.
 	 */
 	public static void selectionShuffle(int[] values) {
-        for( int k = SHUFFLE_COUNT - 1; k >= 0; k-- ) {
-            int r = (int)(Math.random() * k);
-            int tmp = values[r];
-            values[r] = values[k];
-            values[k] = tmp;
-        }
+		for (int k = 51; k >= 1; k--) {
+			int r = (int)(Math.random());
+			if (r >= 0 && r <= k) {
+				values[k] = values[r];
+			}
+		}
     }
+	
+	public static void flip() {
+		
+	}
 }
