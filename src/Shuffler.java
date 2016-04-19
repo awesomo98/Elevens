@@ -85,10 +85,13 @@ public class Shuffler {
     }
 	
 	public static void flip() {
-		for (int j = 0; j <= 2; j++) {
-			String coin[] = {"heads", "tails"};
-			int faces = coin.length;
-			(int)(Math.random(faces))
+		Random rand = new Random();
+		int value = rand.nextInt(3);
+
+		if(value == 0) {
+   			System.out.println("heads");
+		} else { 
+   			System.out.println("tail");
 		}
 	}
 }
