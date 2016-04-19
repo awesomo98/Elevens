@@ -1,3 +1,6 @@
+import java.util.Arrays;
+import java.util.Random;
+
 /**
  * This class provides a convenient way to test shuffling methods.
  */
@@ -50,18 +53,22 @@ public class Shuffler {
 	 * @param values is an array of integers simulating cards to be shuffled.
 	 */
 	public static void perfectShuffle(int[] values) {
-        int[] shuffled = new int[(values.length + 1) / 2];
-        int k = 0;
-        for (int j = 0; j <= 25; j++) {
-        	shuffled[k] = values[j];
+		int[] shuffled = new int[4];
+		int k = 0;
+        
+        for (int j = 0; j <= 2; j++) {
+        	for (int i = 0; i < values.length; i++) {
+        		shuffled = values;
+        	}
         	k = k + 2;
         }
         k = 1;
-        for (int j = 26; j <= 51; j++) {
-        	shuffled[k] = values[j];
-        	k = k + 2;
+        for (int j = 3; j <= 4; j++) {
+        	for (int i = 0; i < values.length; i++) {
+        		shuffled = values;
+        	}
+        	k = k + 1;
         }
-        
 	}
 
 	/**
@@ -76,10 +83,12 @@ public class Shuffler {
 	 * @param values is an array of integers simulating cards to be shuffled.
 	 */
 	public static void selectionShuffle(int[] values) {
-		for (int k = 51; k >= 1; k--) {
-			int r = (int)(Math.random());
-			if (r >= 0 && r <= k) {
-				values[k] = values[r];
+		Random rand = new Random();
+		for (int k = 4; k >= 1; k--) {
+			int r = rand.nextInt(k+1);
+			int[] shuffled = new int[r];
+			for (int i = 0; i < values.length; i++) {
+				values = shuffled;
 			}
 		}
     }
@@ -88,10 +97,20 @@ public class Shuffler {
 		Random rand = new Random();
 		int value = rand.nextInt(3);
 
-		if(value == 0) {
+		if (value == 0) {
    			System.out.println("heads");
 		} else { 
    			System.out.println("tail");
+		}
+	}
+	
+	public static boolean arePermutations(int[] values1, int[] values2) {
+		Arrays.sort(values1);
+		Arrays.sort(values2);
+		if (values1.equals(values2)) {
+			return true;
+		} else {
+			return false;
 		}
 	}
 }
