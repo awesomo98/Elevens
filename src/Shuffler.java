@@ -1,4 +1,6 @@
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -43,6 +45,10 @@ public class Shuffler {
 			System.out.println();
 		}
 		System.out.println();
+		
+		flip();
+		
+		System.out.println(arePermutations({1, 2, 3, 4}, {4, 3, 2, 1));
 	}
 
 
@@ -56,14 +62,14 @@ public class Shuffler {
 		int[] shuffled = new int[values.length];
 		int k = 0;
 
-		for(int j = 0; j < (values.length+1)/2; j ++) {
+		for(int j = 0; j < (values.length + 1) / 2; j ++) {
 			shuffled[k] = values[j];
 			k = k + 2;
 		}
 
 		k = 1;
 
-		for(int h = (values.length+1)/2; h < values.length; h++) {
+		for(int h = (values.length + 1) / 2; h < values.length; h++) {
 			shuffled[k] = values[h];
 			k = k + 2;
 		}
@@ -88,16 +94,16 @@ public class Shuffler {
 	 * searching for an as-yet-unselected card.
 	 * @param values is an array of integers simulating cards to be shuffled.
 	 */
-	public static void selectionShuffle(int[] values) {
-		Random rand = new Random();
-		for (int k = 4; k >= 1; k--) {
-			int r = rand.nextInt(k+1);
-			int[] shuffled = new int[r];
-			for (int i = 0; i < values.length; i++) {
-				values = shuffled;
-			}
-		}
-    }
+//	public static void selectionShuffle(int[] values) {
+//		Random rand = new Random();
+//		for (int k = 4; k >= 1; k--) {
+//			int r = rand.nextInt(k+1);
+//			int[] shuffled = new int[r];
+//			for (int i = 0; i < values.length; i++) {
+//				values = shuffled;
+//			}
+//		}
+//    }
     
     public static void selectionShuffle(int[] values) {
 		List<Integer> notPicked = new ArrayList<Integer>();
@@ -128,14 +134,14 @@ public class Shuffler {
 		if (value == 0) {
    			System.out.println("heads");
 		} else { 
-   			System.out.println("tail");
+   			System.out.println("tails");
 		}
 	}
 	
-	public static boolean arePermutations(int[] values1, int[] values2) {
-		Arrays.sort(values1);
-		Arrays.sort(values2);
-		if (values1.equals(values2)) {
+	public static boolean arePermutations(int[] a, int[] b) {
+		Arrays.sort(a);
+		Arrays.sort(b);
+		if (a.equals(b)) {
 			return true;
 		} else {
 			return false;
