@@ -53,23 +53,29 @@ public class Shuffler {
 	 * @param values is an array of integers simulating cards to be shuffled.
 	 */
 	public static void perfectShuffle(int[] values) {
-		int[] shuffled = new int[4];
+		int[] shuffled = new int[values.length];
 		int k = 0;
-        
-        for (int j = 0; j <= 2; j++) {
-        	for (int i = 0; i < values.length; i++) {
-        		shuffled = values;
-        	}
-        	k = k + 2;
-        }
-        k = 1;
-        for (int j = 3; j <= 4; j++) {
-        	for (int i = 0; i < values.length; i++) {
-        		shuffled = values;
-        	}
-        	k = k + 1;
-        }
+
+		for(int j = 0; j < (values.length+1)/2; j ++) {
+			shuffled[k] = values[j];
+			k = k + 2;
+		}
+
+		k = 1;
+
+		for(int h = (values.length+1)/2; h < values.length; h++) {
+			shuffled[k] = values[h];
+			k = k + 2;
+		}
+
+
+		for(int l = 0; l < values.length; l++) {
+			values[l] = shuffled[l];
+		}
 	}
+
+	
+	
 
 	/**
 	 * Apply an "efficient selection shuffle" to the argument.
@@ -92,6 +98,28 @@ public class Shuffler {
 			}
 		}
     }
+    
+    public static void selectionShuffle(int[] values) {
+		List<Integer> notPicked = new ArrayList<Integer>();
+		List<Integer> picked = new ArrayList<Integer>();
+    int r = 0;
+
+		for(int l = 0; l < values.length; l++) {
+			notPicked.add(l);
+		}
+
+		for(int k = notPicked.size(); k > 0; k --) {
+			r = (int) (Math.random() * notPicked.size());
+			picked.add(notPicked.get(r));
+			notPicked.remove(r);
+		}
+
+		for(int l = 0; l < picked.size(); l++) {
+			values[l] = picked.get(l);
+		}
+	}
+
+    
 	
 	public static void flip() {
 		Random rand = new Random();
