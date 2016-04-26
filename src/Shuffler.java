@@ -12,7 +12,7 @@ public class Shuffler {
 	 * The number of consecutive shuffle steps to be performed in each call
 	 * to each sorting procedure.
 	 */
-	private static final int SHUFFLE_COUNT = 1;
+	private static final int SHUFFLE_COUNT = 2;
 
 
 	/**
@@ -35,7 +35,7 @@ public class Shuffler {
 
 		System.out.println("Results of " + SHUFFLE_COUNT +
 								 " consecutive efficient selection shuffles:");
-		int[] values2 = {0, 1, 2, 3};
+		int[] values2 = {3, 2, 1, 0};
 		for (int j = 1; j <= SHUFFLE_COUNT; j++) {
 			selectionShuffle(values2);
 			System.out.print("  " + j + ":");
@@ -48,7 +48,8 @@ public class Shuffler {
 		
 		flip();
 		
-		System.out.println(arePermutations({1, 2, 3, 4}, {4, 3, 2, 1));
+		
+		System.out.println(arePermutations(values1, values2));
 	}
 
 
@@ -108,19 +109,19 @@ public class Shuffler {
     public static void selectionShuffle(int[] values) {
 		List<Integer> notPicked = new ArrayList<Integer>();
 		List<Integer> picked = new ArrayList<Integer>();
-    int r = 0;
+		int r = 0;
 
-		for(int l = 0; l < values.length; l++) {
+		for (int l = 0; l < values.length; l++) {
 			notPicked.add(l);
 		}
 
-		for(int k = notPicked.size(); k > 0; k --) {
+		for (int k = notPicked.size(); k > 0; k --) {
 			r = (int) (Math.random() * notPicked.size());
 			picked.add(notPicked.get(r));
 			notPicked.remove(r);
 		}
 
-		for(int l = 0; l < picked.size(); l++) {
+		for (int l = 0; l < picked.size(); l++) {
 			values[l] = picked.get(l);
 		}
 	}
@@ -138,23 +139,31 @@ public class Shuffler {
 		}
 	}
 	
-	public static boolean arePermutations(int[] a, int[] b) {
-		Arrays.sort(a);
-		Arrays.sort(b);
-		if (a.equals(b)) {
-			return true;
-		} else {
-			return false;
-		}
-	}
+//	public static boolean arePermutations(int[] a, int[] b) {
+//		Arrays.sort(a);
+//		Arrays.sort(b);
+//		if (a.equals(b)) {
+//			return true;
+//		} else {
+//			return false;
+//		}
+//	}
 	
-	public static boolean arePermutations(int[] arr1, int[] arr2) {
-		boolean there = false;
-		for (int val1 : arr1) {
-			for (int i = 0; i < arr2.length; i++) {
-				if (val1 == arr2[i]) there = true;
-				if (there == false && i == arr2.length - 1) return false;
-				if (i == arr2.length - 1) there = false;
+	public static boolean arePermutations(int[] a, int[] b) {
+//		Arrays.sort(a);
+//		Arrays.sort(b);
+		boolean match = false;
+		for (int value : a) {
+			for (int i = 0; i < b.length; i++) {
+				if (value == b[i]) {
+					match = true;
+				}
+				if (match == false && i == b.length - 1) {
+					return false;
+				}
+				if (i == b.length - 1) {
+					match = false;
+				}
 			}
 		}
 		return true;
