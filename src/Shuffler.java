@@ -147,4 +147,16 @@ public class Shuffler {
 			return false;
 		}
 	}
+	
+	public static boolean arePermutations(int[] arr1, int[] arr2) {
+		boolean there = false;
+		for (int val1 : arr1) {
+			for (int i = 0; i < arr2.length; i++) {
+				if (val1 == arr2[i]) there = true;
+				if (there == false && i == arr2.length - 1) return false;
+				if (i == arr2.length - 1) there = false;
+			}
+		}
+		return true;
+	}
 }
