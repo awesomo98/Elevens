@@ -35,7 +35,7 @@ public class Shuffler {
 
 		System.out.println("Results of " + SHUFFLE_COUNT +
 								 " consecutive efficient selection shuffles:");
-		int[] values2 = {3, 2, 1, 5};
+		int[] values2 = {3, 2, 1, 0};
 		for (int j = 1; j <= SHUFFLE_COUNT; j++) {
 			selectionShuffle(values2);
 			System.out.print("  " + j + ":");
@@ -50,7 +50,7 @@ public class Shuffler {
 		
 		
 		int[] a = {1, 3, 5, 9};
-		int[] b = {5, 3, 9, 1};
+		int[] b = {5, 4, 9, 1};
 		System.out.println(arePermutations(a, b));
 	}
 
@@ -111,9 +111,9 @@ public class Shuffler {
     public static void selectionShuffle(int[] values) {
 		for (int k = values.length - 1; k >= 0; k--) {
 			int r = (int) Math.random() * (k + 1);
-			int kVal = values[k];
+			int kValue = values[k];
 			values[k] = values[r];
-			values[r] = kVal;
+			values[r] = kValue;
 		}
 	}
 
@@ -141,15 +141,13 @@ public class Shuffler {
 //	}
 	
 	public static boolean arePermutations(int[] a, int[] b) {
-//		Arrays.sort(a);
-//		Arrays.sort(b);
 		boolean match = false;
 		for (int value : a) {
 			for (int i = 0; i < b.length; i++) {
 				if (value == b[i]) {
 					match = true;
 				}
-				if (match == false && i == b.length - 1) {
+				if (!match && i == b.length - 1) {
 					return false;
 				}
 				if (i == b.length - 1) {
