@@ -49,7 +49,9 @@ public class Shuffler {
 		flip();
 		
 		
-		System.out.println(arePermutations(values1, values2));
+		int[] a = {1, 3, 5, 9};
+		int[] b = {5, 3, 9, 1};
+		System.out.println(arePermutations(a, b));
 	}
 
 
@@ -107,22 +109,11 @@ public class Shuffler {
 //    }
     
     public static void selectionShuffle(int[] values) {
-		List<Integer> notPicked = new ArrayList<Integer>();
-		List<Integer> picked = new ArrayList<Integer>();
-		int r = 0;
-
-		for (int l = 0; l < values.length; l++) {
-			notPicked.add(l);
-		}
-
-		for (int k = notPicked.size(); k > 0; k --) {
-			r = (int) (Math.random() * notPicked.size());
-			picked.add(notPicked.get(r));
-			notPicked.remove(r);
-		}
-
-		for (int l = 0; l < picked.size(); l++) {
-			values[l] = picked.get(l);
+		for (int k = values.length - 1; k >= 0; k--) {
+			int r = (int) Math.random() * (k + 1);
+			int kVal = values[k];
+			values[k] = values[r];
+			values[r] = kVal;
 		}
 	}
 
